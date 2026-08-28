@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Branify WhatsApp CRM | Build. Brand. Grow.</title>
+    <link rel="icon" type="image/jpeg" href="/branify-logo.jpg" />
+    <meta name="description" content="Production-grade WhatsApp Business CRM for Branify." />
+    <script>
+      // Meta Facebook SDK for JavaScript
+      window.fbAsyncInit = function() {
+        if (window.FB) {
+          window.FB.init({
+            appId: '1825645181931510',
+            cookie: true,
+            xfbml: true,
+            version: 'v21.0'
+          });
+          window.FB.AppEvents.logPageView();
+        }
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+      (function() {
+        try {
+          var originalFetch = typeof window !== 'undefined' && window.fetch ? window.fetch.bind(window) : null;
+          var currentFetch = originalFetch;
+          if (originalFetch) {
+            Object.defineProperty(window, 'fetch', {
+              get: function() {
+                return currentFetch;
+              },
+              set: function(fn) {
+                currentFetch = fn;
+              },
+              configurable: true,
+              enumerable: true
+            });
+          }
+        } catch (e) {
+          // Graceful fallback
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[#090A0F] text-slate-100 antialiased min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

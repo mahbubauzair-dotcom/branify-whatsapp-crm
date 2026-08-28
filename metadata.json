@@ -1,0 +1,6 @@
+{
+  "name": "Branify WhatsApp CRM",
+  "description": "Production-grade WhatsApp Business CRM for Branify with shared inbox, lead pipelines, broadcasts, templates, automations, and AI intelligence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
