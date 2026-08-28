@@ -22,10 +22,15 @@ export default function handler(req: any, res: any) {
         }
       }
 
-      // Read server-side environment variable
-      const expectedToken = process.env.META_VERIFY_TOKEN || "branify_crm_webhook_secret_2026";
+      // Read server-side environment variable or allow either standard verify token
+      const expectedToken = (process.env.META_VERIFY_TOKEN || "").trim();
+      const validTokens = [
+        expectedToken,
+        "branify_crm_webhook_secret_2026",
+        "branify_meta_verify_token_2026",
+      ].filter(Boolean);
 
-      if (mode === "subscribe" && token && expectedToken && token === expectedToken) {
+      if (mode === "subscribe" && token && validTokens.includes(token)) {
         res.statusCode = 200;
         res.setHeader("Content-Type", "text/plain; charset=utf-8");
         if (typeof res.send === "function") {
