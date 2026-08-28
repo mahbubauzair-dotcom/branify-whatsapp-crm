@@ -6,7 +6,7 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const { conversationId, contactWaId, body, type = "text", template } = req.body || {};
+    const { conversationId, contactWaId, body, type = "text", template, category } = req.body || {};
 
     if (!contactWaId || (!body && !template)) {
       return res.status(400).json({ error: "Recipient phone number and message body or template are required." });
@@ -26,6 +26,11 @@ export default async function handler(req: any, res: any) {
       to: cleanTo,
       type: type,
     };
+
+    // Meta Direct Send support (utility / authentication)
+    if (category) {
+      bodyPayload.category = String(category).toLowerCase();
+    }
 
     if (type === "text" && body) {
       bodyPayload.text = { body };
